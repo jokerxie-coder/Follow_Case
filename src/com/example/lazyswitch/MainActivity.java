@@ -39,18 +39,18 @@ public class MainActivity extends Activity {
 	
 	private GestureDetector gestureDetector;
 	
-	private final static int REQUEST_CONNECT_DEVICE = 1;    //ºê¶¨Òå²éÑ¯Éè±¸¾ä±ú
+	private final static int REQUEST_CONNECT_DEVICE = 1;    //å®å®šä¹‰æŸ¥è¯¢è®¾å¤‡å¥æŸ„
 	
-	private final static String MY_UUID = "00001101-0000-1000-8000-00805F9B34FB";   //SPP·şÎñUUIDºÅ
+	private final static String MY_UUID = "00001101-0000-1000-8000-00805F9B34FB";   //SPPæœåŠ¡UUIDå·
 	
-	private InputStream is;    //ÊäÈëÁ÷£¬ÓÃÀ´½ÓÊÕÀ¶ÑÀÊı¾İ
-	//private TextView text0;    //ÌáÊ¾À¸½â¾ä±ú
-    private EditText edit0;    //·¢ËÍÊı¾İÊäÈë¾ä±ú
-    private String smsg = "";    //ÏÔÊ¾ÓÃÊı¾İ»º´æ
+	private InputStream is;    //è¾“å…¥æµï¼Œç”¨æ¥æ¥æ”¶è“ç‰™æ•°æ®
+	//private TextView text0;    //æç¤ºæ è§£å¥æŸ„
+    private EditText edit0;    //å‘é€æ•°æ®è¾“å…¥å¥æŸ„
+    private String smsg = "";    //æ˜¾ç¤ºç”¨æ•°æ®ç¼“å­˜
     
-    public String filename=""; //ÓÃÀ´±£´æ´æ´¢µÄÎÄ¼şÃû
-    BluetoothDevice _device = null;     //À¶ÑÀÉè±¸
-    BluetoothSocket _socket = null;      //À¶ÑÀÍ¨ĞÅsocket
+    public String filename=""; //ç”¨æ¥ä¿å­˜å­˜å‚¨çš„æ–‡ä»¶å
+    BluetoothDevice _device = null;     //è“ç‰™è®¾å¤‡
+    BluetoothSocket _socket = null;      //è“ç‰™é€šä¿¡socket
     boolean _discoveryFinished = false;    
     boolean bRun = true;
     boolean bThread = false;
@@ -61,10 +61,10 @@ public class MainActivity extends Activity {
     private String ifSwitch ;
     private Button bu_turnon;
     
-    private BluetoothAdapter _bluetooth = BluetoothAdapter.getDefaultAdapter();    //»ñÈ¡±¾µØÀ¶ÑÀÊÊÅäÆ÷£¬¼´À¶ÑÀÉè±¸
+    private BluetoothAdapter _bluetooth = BluetoothAdapter.getDefaultAdapter();    //è·å–æœ¬åœ°è“ç‰™é€‚é…å™¨ï¼Œå³è“ç‰™è®¾å¤‡
 	private SensorManager sensorManager;
 	
-	private float rotate;// ·ÀÖ¹¶à´ÎÒÆ¶¯£¬½Ç¶È³öÏÖÎÊÌâ£¬ÔÚÃ¿´ÎÒÆ¶¯Ê±£¬ÏÈÒÆ¶¯»ØÀ´¡£
+	private float rotate;// é˜²æ­¢å¤šæ¬¡ç§»åŠ¨ï¼Œè§’åº¦å‡ºç°é—®é¢˜ï¼Œåœ¨æ¯æ¬¡ç§»åŠ¨æ—¶ï¼Œå…ˆç§»åŠ¨å›æ¥ã€‚
 
 	private MySensorEventListener listener;
 
@@ -73,7 +73,7 @@ public class MainActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);   //ÉèÖÃ»­ÃæÎªÖ÷»­Ãæ main.xml
+        setContentView(R.layout.main);   //è®¾ç½®ç”»é¢ä¸ºä¸»ç”»é¢ main.xml
         
         
         actionBar = getActionBar();
@@ -83,11 +83,11 @@ public class MainActivity extends Activity {
         bu_turnon = (Button)findViewById(R.id.bu_turnon);
         tv_nowAngle=(TextView)findViewById(R.id.tv_nowAngle);
         
-     // 1¡¢»ñÈ¡Ò»¸öSensorManager
+     // 1ã€è·å–ä¸€ä¸ªSensorManager
         sensorManager = (SensorManager) this.getSystemService(Context.SENSOR_SERVICE);
-        // 2¡¢»ñÈ¡Ò»¸öÖ¸¶¨typeµÄ´«¸ĞÆ÷
-        Sensor sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);// ·½Ïò´«¸ĞÆ÷£¬Ê¹ÓÃdeprecatedµÄ£¬¸üºÃµÄ¼æÈİµÍ°æ±¾¡£
-        // 3¡¢×¢²áÒ»¸ö¼àÌıÆ÷
+        // 2ã€è·å–ä¸€ä¸ªæŒ‡å®štypeçš„ä¼ æ„Ÿå™¨
+        Sensor sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);// æ–¹å‘ä¼ æ„Ÿå™¨ï¼Œä½¿ç”¨deprecatedçš„ï¼Œæ›´å¥½çš„å…¼å®¹ä½ç‰ˆæœ¬ã€‚
+        // 3ã€æ³¨å†Œä¸€ä¸ªç›‘å¬å™¨
         listener = new MySensorEventListener();
         sensorManager.registerListener(listener , sensor, SensorManager.SENSOR_DELAY_FASTEST);
 
@@ -126,12 +126,12 @@ public class MainActivity extends Activity {
 				if(Math.abs(velocityY)<200){
 					return false;
 				}
-				//ÏòÏÂ»¬¶¯
+				//å‘ä¸‹æ»‘åŠ¨
 				if(Math.abs(e2.getRawX() - e1.getRawX())<400&&(e2.getRawY() - e1.getRawY())>40){
 					actionBar.show();
 					
 				}
-				//ÏòÉÏ»¬¶¯
+				//å‘ä¸Šæ»‘åŠ¨
 				if(Math.abs(e2.getRawX() - e1.getRawX())<400&&(e1.getRawY() - e2.getRawY())>40){
 					actionBar.hide();
 					
@@ -146,14 +146,14 @@ public class MainActivity extends Activity {
 			}
 		}, handler);
         
-       //Èç¹û´ò¿ª±¾µØÀ¶ÑÀÉè±¸²»³É¹¦£¬ÌáÊ¾ĞÅÏ¢£¬½áÊø³ÌĞò
+       //å¦‚æœæ‰“å¼€æœ¬åœ°è“ç‰™è®¾å¤‡ä¸æˆåŠŸï¼Œæç¤ºä¿¡æ¯ï¼Œç»“æŸç¨‹åº
         if (_bluetooth == null){
-        	Toast.makeText(this, "ÎŞ·¨´ò¿ªÊÖ»úÀ¶ÑÀ£¬ÇëÈ·ÈÏÊÖ»úÊÇ·ñÓĞÀ¶ÑÀ¹¦ÄÜ£¡", Toast.LENGTH_LONG).show();
+        	Toast.makeText(this, "æ— æ³•æ‰“å¼€æ‰‹æœºè“ç‰™ï¼Œè¯·ç¡®è®¤æ‰‹æœºæ˜¯å¦æœ‰è“ç‰™åŠŸèƒ½ï¼", Toast.LENGTH_LONG).show();
             finish();
             return;
         }
         
-        // ÉèÖÃÉè±¸¿ÉÒÔ±»ËÑË÷  
+        // è®¾ç½®è®¾å¤‡å¯ä»¥è¢«æœç´¢  
        new Thread(){
     	   public void run(){
     		   if(_bluetooth.isEnabled()==false){
@@ -168,19 +168,19 @@ public class MainActivity extends Activity {
     	return super.onTouchEvent(event);
     }
 
-    //·¢ËÍ°´¼üÏìÓ¦
+    //å‘é€æŒ‰é”®å“åº”
     public void onSendButtonClicked(View v){
     	int i=0;
     	int n=0;
     	try{
-    		OutputStream os = _socket.getOutputStream();   //À¶ÑÀÁ¬½ÓÊä³öÁ÷
+    		OutputStream os = _socket.getOutputStream();   //è“ç‰™è¿æ¥è¾“å‡ºæµ
     		byte[] bos = edit0.getText().toString().getBytes();
     		for(i=0;i<bos.length;i++){
     			if(bos[i]==0x0a)n++;
     		}
     		byte[] bos_new = new byte[bos.length+n];
     		n=0;
-    		for(i=0;i<bos.length;i++){ //ÊÖ»úÖĞ»»ĞĞÎª0a,½«Æä¸ÄÎª0d 0aºóÔÙ·¢ËÍ
+    		for(i=0;i<bos.length;i++){ //æ‰‹æœºä¸­æ¢è¡Œä¸º0a,å°†å…¶æ”¹ä¸º0d 0aåå†å‘é€
     			if(bos[i]==0x0a){
     				bos_new[n]=0x0d;
     				n++;
@@ -209,17 +209,17 @@ public class MainActivity extends Activity {
         		editor.putString("switch", "off");
         		editor.commit();
         		bu_turnon.setBackgroundResource(R.drawable.switch_off);
-        		bu_turnon.setText("½áÊø¸ú×Ù");
+        		bu_turnon.setText("ç»“æŸè·Ÿè¸ª");
         	}else{
         		m.stop();
         		editor.putString("switch", "on");
         		editor.commit();
-        		bu_turnon.setText("¿ªÊ¼¸ú×Ù");
+        		bu_turnon.setText("å¼€å§‹è·Ÿè¸ª");
         		bu_turnon.setBackgroundResource(R.drawable.switch_on);
         	}
     	}else{
 
-    		Toast.makeText(getApplicationContext(), "ÇëÓëÖÇÄÜ¸ú×Ù»úÆ÷ÈËÁ¬½Ó", 0).show();
+    		Toast.makeText(getApplicationContext(), "è¯·ä¸æ™ºèƒ½è·Ÿè¸ªæœºå™¨äººè¿æ¥", 0).show();
     	}
     	
     }
@@ -277,7 +277,7 @@ public class MainActivity extends Activity {
     		}
     		byte[] bos_new = new byte[bos.length+n];
     		n=0;
-    		for(i=0;i<bos.length;i++){ //ÊÖ»úÖĞ»»ĞĞÎª0a,½«Æä¸ÄÎª0d 0aºóÔÙ·¢ËÍ
+    		for(i=0;i<bos.length;i++){ //æ‰‹æœºä¸­æ¢è¡Œä¸º0a,å°†å…¶æ”¹ä¸º0d 0aåå†å‘é€
     			if(bos[i]==0x0a){
     				bos_new[n]=0x0d;
     				n++;
@@ -288,60 +288,60 @@ public class MainActivity extends Activity {
     			n++;
     		}
     		os.write(bos_new);	
-    		Toast.makeText(getApplicationContext(), "·¢ËÍÊı¾İ³É¹¦£¡", 0).show();
+    		Toast.makeText(getApplicationContext(), "å‘é€æ•°æ®æˆåŠŸï¼", 0).show();
 		} catch (IOException e) {
 			
-			Toast.makeText(getApplicationContext(), "·¢ËÍÊı¾İÊ§°Ü£¡", 0).show();
+			Toast.makeText(getApplicationContext(), "å‘é€æ•°æ®å¤±è´¥ï¼", 0).show();
 			e.printStackTrace();
 		} 
     }
     	else
     	{
-    		Toast.makeText(getApplicationContext(), "ÇëÓëÖÇÄÜ¸ú×Ù»úÆ÷ÈËÁ¬½Ó", 0).show();
+    		Toast.makeText(getApplicationContext(), "è¯·ä¸æ™ºèƒ½è·Ÿè¸ªæœºå™¨äººè¿æ¥", 0).show();
     	}
     }
     
-    //½ÓÊÕ»î¶¯½á¹û£¬ÏìÓ¦startActivityForResult()
+    //æ¥æ”¶æ´»åŠ¨ç»“æœï¼Œå“åº”startActivityForResult()
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
     	switch(requestCode){
-    	case REQUEST_CONNECT_DEVICE:     //Á¬½Ó½á¹û£¬ÓÉDeviceListActivityÉèÖÃ·µ»Ø
-    		// ÏìÓ¦·µ»Ø½á¹û
-            if (resultCode == Activity.RESULT_OK) {   //Á¬½Ó³É¹¦£¬ÓÉDeviceListActivityÉèÖÃ·µ»Ø
-                // MACµØÖ·£¬ÓÉDeviceListActivityÉèÖÃ·µ»Ø
+    	case REQUEST_CONNECT_DEVICE:     //è¿æ¥ç»“æœï¼Œç”±DeviceListActivityè®¾ç½®è¿”å›
+    		// å“åº”è¿”å›ç»“æœ
+            if (resultCode == Activity.RESULT_OK) {   //è¿æ¥æˆåŠŸï¼Œç”±DeviceListActivityè®¾ç½®è¿”å›
+                // MACåœ°å€ï¼Œç”±DeviceListActivityè®¾ç½®è¿”å›
                 String address = data.getExtras().getString(DeviceListActivity.EXTRA_DEVICE_ADDRESS);
-                // µÃµ½À¶ÑÀÉè±¸¾ä±ú      
+                // å¾—åˆ°è“ç‰™è®¾å¤‡å¥æŸ„      
                 _device = _bluetooth.getRemoteDevice(address);
  
-                // ÓÃ·şÎñºÅµÃµ½socket
+                // ç”¨æœåŠ¡å·å¾—åˆ°socket
                 try{
                 	_socket = _device.createRfcommSocketToServiceRecord(UUID.fromString(MY_UUID));
                 }catch(IOException e){
-                	Toast.makeText(this, "Á¬½ÓÊ§°Ü£¡", Toast.LENGTH_SHORT).show();
+                	Toast.makeText(this, "è¿æ¥å¤±è´¥ï¼", Toast.LENGTH_SHORT).show();
                 }
-                //Á¬½Ósocket
+                //è¿æ¥socket
             	Button btn = (Button) findViewById(R.id.Button03);
                 try{
                 	_socket.connect();
-                	Toast.makeText(this, "Á¬½Ó"+_device.getName()+"³É¹¦£¡", Toast.LENGTH_SHORT).show();
+                	Toast.makeText(this, "è¿æ¥"+_device.getName()+"æˆåŠŸï¼", Toast.LENGTH_SHORT).show();
                 	editor.putBoolean("isConnected", true);
                 	editor.commit();
-                	btn.setText("¶Ï¿ª");
+                	btn.setText("æ–­å¼€");
                 }catch(IOException e){
                 	try{
-                		Toast.makeText(this, "Á¬½ÓÊ§°Ü£¡", Toast.LENGTH_SHORT).show();
+                		Toast.makeText(this, "è¿æ¥å¤±è´¥ï¼", Toast.LENGTH_SHORT).show();
                 		_socket.close();
                 		_socket = null;
                 	}catch(IOException ee){
-                		Toast.makeText(this, "Á¬½ÓÊ§°Ü£¡", Toast.LENGTH_SHORT).show();
+                		Toast.makeText(this, "è¿æ¥å¤±è´¥ï¼", Toast.LENGTH_SHORT).show();
                 	}
                 	return;
                 }
                 
-                //´ò¿ª½ÓÊÕÏß³Ì
+                //æ‰“å¼€æ¥æ”¶çº¿ç¨‹
                 try{
-            		is = _socket.getInputStream();   //µÃµ½À¶ÑÀÊı¾İÊäÈëÁ÷
+            		is = _socket.getInputStream();   //å¾—åˆ°è“ç‰™æ•°æ®è¾“å…¥æµ
             		}catch(IOException e){
-            			Toast.makeText(this, "½ÓÊÕÊı¾İÊ§°Ü£¡", Toast.LENGTH_SHORT).show();
+            			Toast.makeText(this, "æ¥æ”¶æ•°æ®å¤±è´¥ï¼", Toast.LENGTH_SHORT).show();
             			return;
             		}
             		if(bThread==false){
@@ -356,7 +356,7 @@ public class MainActivity extends Activity {
     	}
     }
     
-    //½ÓÊÕÊı¾İÏß³Ì
+    //æ¥æ”¶æ•°æ®çº¿ç¨‹
     Thread ReadThread=new Thread(){
     	
     	public void run(){
@@ -366,14 +366,14 @@ public class MainActivity extends Activity {
     		int i = 0;
     		int n = 0;
     		bRun = true;
-    		//½ÓÊÕÏß³Ì
+    		//æ¥æ”¶çº¿ç¨‹
     		while(true){
     			try{
     				while(is.available()==0){
     					while(bRun == false){}
     				}
     				while(true){
-    					num = is.read(buffer);         //¶ÁÈëÊı¾İ
+    					num = is.read(buffer);         //è¯»å…¥æ•°æ®
     					n=0;
     					
     					String s0 = new String(buffer,0,num);
@@ -387,8 +387,8 @@ public class MainActivity extends Activity {
     						n++;
     					}
     					String s = new String(buffer_new,0,n);
-    					smsg+=s;   //Ğ´Èë½ÓÊÕ»º´æ
-    					if(is.available()==0)break;  //¶ÌÊ±¼äÃ»ÓĞÊı¾İ²ÅÌø³ö½øĞĞÏÔÊ¾
+    					smsg+=s;   //å†™å…¥æ¥æ”¶ç¼“å­˜
+    					if(is.available()==0)break;  //çŸ­æ—¶é—´æ²¡æœ‰æ•°æ®æ‰è·³å‡ºè¿›è¡Œæ˜¾ç¤º
     				}    	    		
     	    		}catch(IOException e){
     	    	}
@@ -396,7 +396,7 @@ public class MainActivity extends Activity {
     	}
     };
     
-    //ÏûÏ¢´¦Àí¶ÓÁĞ
+    //æ¶ˆæ¯å¤„ç†é˜Ÿåˆ—
     Handler handler= new Handler(){
     	public void handleMessage(Message msg){
     		super.handleMessage(msg);
@@ -407,14 +407,14 @@ public class MainActivity extends Activity {
     	}
     };
     
-    //¹Ø±Õ³ÌĞòµôÓÃ´¦Àí²¿·Ö
+    //å…³é—­ç¨‹åºæ‰ç”¨å¤„ç†éƒ¨åˆ†
     public void onDestroy(){
     	super.onDestroy();
-    	if(_socket!=null)  //¹Ø±ÕÁ¬½Ósocket
+    	if(_socket!=null)  //å…³é—­è¿æ¥socket
     	try{
     		_socket.close();
     	}catch(IOException e){}
-    	_bluetooth.disable();  //¹Ø±ÕÀ¶ÑÀ·şÎñ
+    	_bluetooth.disable();  //å…³é—­è“ç‰™æœåŠ¡
     	
     	m.destroy();
     	sensorManager.unregisterListener(listener);
@@ -423,30 +423,30 @@ public class MainActivity extends Activity {
     
     
     
-    //Á¬½Ó°´¼üÏìÓ¦º¯Êı
+    //è¿æ¥æŒ‰é”®å“åº”å‡½æ•°
     public void onConnectButtonClicked(View v){ 
-    	if(_bluetooth.isEnabled()==false){  //Èç¹ûÀ¶ÑÀ·şÎñ²»¿ÉÓÃÔòÌáÊ¾
-    		Toast.makeText(this, " ´ò¿ªÀ¶ÑÀÖĞ...", Toast.LENGTH_LONG).show();
+    	if(_bluetooth.isEnabled()==false){  //å¦‚æœè“ç‰™æœåŠ¡ä¸å¯ç”¨åˆ™æç¤º
+    		Toast.makeText(this, " æ‰“å¼€è“ç‰™ä¸­...", Toast.LENGTH_LONG).show();
     		return;
     	}
     	
     	
-        //ÈçÎ´Á¬½ÓÉè±¸Ôò´ò¿ªDeviceListActivity½øĞĞÉè±¸ËÑË÷
+        //å¦‚æœªè¿æ¥è®¾å¤‡åˆ™æ‰“å¼€DeviceListActivityè¿›è¡Œè®¾å¤‡æœç´¢
     	Button btn = (Button) findViewById(R.id.Button03);
     	if(_socket==null){
-    		Intent serverIntent = new Intent(this, DeviceListActivity.class); //Ìø×ª³ÌĞòÉèÖÃ
-    		startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE);  //ÉèÖÃ·µ»Øºê¶¨Òå
+    		Intent serverIntent = new Intent(this, DeviceListActivity.class); //è·³è½¬ç¨‹åºè®¾ç½®
+    		startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE);  //è®¾ç½®è¿”å›å®å®šä¹‰
     	}
     	else{
     		bu_turnon.setBackgroundResource(R.drawable.switch_off);
-    		 //¹Ø±ÕÁ¬½Ósocket
+    		 //å…³é—­è¿æ¥socket
     	    try{
     	    	
     	    	is.close();
     	    	_socket.close();
     	    	_socket = null;
     	    	bRun = false;
-    	    	btn.setText("Á¬½Ó");
+    	    	btn.setText("è¿æ¥");
     	    	
     	    }catch(IOException e){} 
     	    editor.putBoolean("isConnected", false);
@@ -461,7 +461,7 @@ public class MainActivity extends Activity {
     	@Override
     	public void run(){
     		
-    		//System.out.print("run·½·¨±»Ö´ĞĞ¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£");
+    		//System.out.print("runæ–¹æ³•è¢«æ‰§è¡Œã€‚ã€‚ã€‚ã€‚ã€‚ã€‚ã€‚ã€‚ã€‚ã€‚ã€‚ã€‚");
     		
     		
     		while(true)
@@ -491,18 +491,18 @@ public class MainActivity extends Activity {
     };
     
     /**
-     * ¶¨Òå³ÉÄÚ²¿Àà£¬¶ø²»ÊÇÄäÃûÄÚ²¿Àà£¬ÒòÎªÈ¡Ïû×¢²áµÄÊ±ºòĞèÒªÓÃµ½
+     * å®šä¹‰æˆå†…éƒ¨ç±»ï¼Œè€Œä¸æ˜¯åŒ¿åå†…éƒ¨ç±»ï¼Œå› ä¸ºå–æ¶ˆæ³¨å†Œçš„æ—¶å€™éœ€è¦ç”¨åˆ°
      */
     private class MySensorEventListener implements SensorEventListener {
  
         @Override
         public void onSensorChanged(SensorEvent event) {
-            // Õı±±·½Ïò£¬µÚÒ»´ÎÒÆ¶¯30¡ã£¬µÚ¶ş´ÎÒÆ¶¯30¡ã£¬
+            // æ­£åŒ—æ–¹å‘ï¼Œç¬¬ä¸€æ¬¡ç§»åŠ¨30Â°ï¼Œç¬¬äºŒæ¬¡ç§»åŠ¨30Â°ï¼Œ
             float[] values = event.values;
             // 0=North, 90=East, 180=South, 270=West
-            // float light = values[0];// ¶ÔÓÚ¹âÏß´«¸ĞÆ÷À´Ëµ£¬values[0]:´ú±í¹âÏßµÄÇ¿Èõ
-            //float jiaodu = values[0];// ¶ÔÓÚ·½Ïò´«¸ĞÆ÷À´Ëµ£¬values[0]:´ú±íµÄÊÇÓëÕı±±·½ÏòµÄ½Ç¶È£¬Õı±±Îª0£¬²é¿´api
-            //System.out.println("ÓëÕı±±µÄ¼Ğ½Ç£º" + jiaodu);
+            // float light = values[0];// å¯¹äºå…‰çº¿ä¼ æ„Ÿå™¨æ¥è¯´ï¼Œvalues[0]:ä»£è¡¨å…‰çº¿çš„å¼ºå¼±
+            //float jiaodu = values[0];// å¯¹äºæ–¹å‘ä¼ æ„Ÿå™¨æ¥è¯´ï¼Œvalues[0]:ä»£è¡¨çš„æ˜¯ä¸æ­£åŒ—æ–¹å‘çš„è§’åº¦ï¼Œæ­£åŒ—ä¸º0ï¼ŒæŸ¥çœ‹api
+            //System.out.println("ä¸æ­£åŒ—çš„å¤¹è§’ï¼š" + jiaodu);
             rotate = values[0];
             tv_nowAngle.setText(String.valueOf((int)rotate));
         }
