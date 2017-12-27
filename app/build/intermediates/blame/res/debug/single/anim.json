@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_top.xml",
+        "source": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\anim\\abc_slide_out_top.xml"
+    },
+    {
+        "merged": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_top.xml",
+        "source": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\anim\\abc_slide_in_top.xml"
+    },
+    {
+        "merged": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_in.xml",
+        "source": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\anim\\abc_fade_in.xml"
+    },
+    {
+        "merged": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_bottom.xml",
+        "source": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\anim\\abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",
+        "source": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\anim\\abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",
+        "source": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\anim\\abc_fade_out.xml"
+    }
+]

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<item 
+	    android:id="@+id/pin_stay" 
+	    android:icon="@drawable/pin_stay"
+	    android:title="pin"
+		android:showAsAction="always|withText"
+		>
+	</item>
+	
+	<item 
+	    android:id="@+id/xuanxiang" 
+	    android:title="么么哒"
+	    android:icon="@drawable/option"
+		android:showAsAction="always|withText"
+		>
+	    <menu >
+            <item
+                android:id="@+id/quit"
+                android:title="退出"
+                />
+            <item
+                android:id="@+id/about"
+                android:title="说明"
+                />
+	    </menu>
+	</item>
+</menu>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+  
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/instruction"
+        android:textSize="20sp"
+        android:textColor="#99e74c3c"
+        android:lineSpacingExtra="4dp"
+        android:text="使用说明：\n      使用该软件前请把智能跟踪机器人 的蓝牙打开，打开后点击软件右下角的连接按钮，搜索蓝牙，配对密码为 1234。直到连接成功，才可进行跟踪。
+        \n\n\n      如果连接失败，请尝试重启智能跟踪机器人的蓝牙，或者去系统中清除蓝牙记录，重新连接。\n\n      如果还是无法连接，请给智能跟踪机器人充电。"
+        />
+    
+    
+    <TextView
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#99e74c3c"
+        android:text="power by___ Robot Lab"
+        />
+    
+</RelativeLayout>
