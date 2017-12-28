@@ -11,13 +11,13 @@
                     "endOffset": 112
                 },
                 "from": {
-                    "file": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-large\\values.xml",
+                    "file": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-large\\values-large.xml",
                     "position": {
-                        "startLine": 6,
+                        "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 279,
+                        "startOffset": 230,
                         "endColumn": 61,
-                        "endOffset": 336
+                        "endOffset": 287
                     }
                 }
             },
@@ -30,13 +30,13 @@
                     "endOffset": 184
                 },
                 "from": {
-                    "file": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-large\\values.xml",
+                    "file": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-large\\values-large.xml",
                     "position": {
-                        "startLine": 10,
+                        "startLine": 7,
                         "startColumn": 4,
-                        "startOffset": 565,
+                        "startOffset": 468,
                         "endColumn": 71,
-                        "endOffset": 632
+                        "endOffset": 535
                     }
                 }
             },
@@ -45,17 +45,17 @@
                     "startLine": 4,
                     "startColumn": 4,
                     "startOffset": 189,
-                    "endColumn": 60,
-                    "endOffset": 245
+                    "endColumn": 58,
+                    "endOffset": 243
                 },
                 "from": {
-                    "file": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-large\\values.xml",
+                    "file": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-large\\values-large.xml",
                     "position": {
-                        "startLine": 14,
+                        "startLine": 8,
                         "startColumn": 4,
-                        "startOffset": 860,
-                        "endColumn": 60,
-                        "endOffset": 916
+                        "startOffset": 540,
+                        "endColumn": 58,
+                        "endOffset": 594
                     }
                 }
             },
@@ -63,18 +63,18 @@
                 "to": {
                     "startLine": 5,
                     "startColumn": 4,
-                    "startOffset": 250,
-                    "endColumn": 58,
-                    "endOffset": 304
+                    "startOffset": 248,
+                    "endColumn": 70,
+                    "endOffset": 314
                 },
                 "from": {
-                    "file": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-large\\values.xml",
+                    "file": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-large\\values-large.xml",
                     "position": {
-                        "startLine": 18,
+                        "startLine": 11,
                         "startColumn": 4,
-                        "startOffset": 1145,
-                        "endColumn": 58,
-                        "endOffset": 1199
+                        "startOffset": 775,
+                        "endColumn": 70,
+                        "endOffset": 841
                     }
                 }
             },
@@ -82,18 +82,18 @@
                 "to": {
                     "startLine": 6,
                     "startColumn": 4,
-                    "startOffset": 309,
-                    "endColumn": 63,
-                    "endOffset": 368
+                    "startOffset": 319,
+                    "endColumn": 70,
+                    "endOffset": 385
                 },
                 "from": {
-                    "file": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-large\\values.xml",
+                    "file": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-large\\values-large.xml",
                     "position": {
-                        "startLine": 22,
+                        "startLine": 12,
                         "startColumn": 4,
-                        "startOffset": 1428,
-                        "endColumn": 63,
-                        "endOffset": 1487
+                        "startOffset": 846,
+                        "endColumn": 70,
+                        "endOffset": 912
                     }
                 }
             },
@@ -101,18 +101,18 @@
                 "to": {
                     "startLine": 7,
                     "startColumn": 4,
-                    "startOffset": 373,
-                    "endColumn": 66,
-                    "endOffset": 435
+                    "startOffset": 390,
+                    "endColumn": 69,
+                    "endOffset": 455
                 },
                 "from": {
-                    "file": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-large\\values.xml",
+                    "file": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-large\\values-large.xml",
                     "position": {
-                        "startLine": 24,
+                        "startLine": 13,
                         "startColumn": 4,
-                        "startOffset": 1493,
-                        "endColumn": 66,
-                        "endOffset": 1555
+                        "startOffset": 917,
+                        "endColumn": 69,
+                        "endOffset": 982
                     }
                 }
             },
@@ -120,18 +120,18 @@
                 "to": {
                     "startLine": 8,
                     "startColumn": 4,
-                    "startOffset": 440,
-                    "endColumn": 66,
-                    "endOffset": 502
+                    "startOffset": 460,
+                    "endColumn": 69,
+                    "endOffset": 525
                 },
                 "from": {
-                    "file": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-large\\values.xml",
+                    "file": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-large\\values-large.xml",
                     "position": {
-                        "startLine": 25,
+                        "startLine": 14,
                         "startColumn": 4,
-                        "startOffset": 1560,
-                        "endColumn": 66,
-                        "endOffset": 1622
+                        "startOffset": 987,
+                        "endColumn": 69,
+                        "endOffset": 1052
                     }
                 }
             },
@@ -139,18 +139,18 @@
                 "to": {
                     "startLine": 9,
                     "startColumn": 4,
-                    "startOffset": 507,
-                    "endColumn": 65,
-                    "endOffset": 568
+                    "startOffset": 530,
+                    "endColumn": 67,
+                    "endOffset": 593
                 },
                 "from": {
-                    "file": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-large\\values.xml",
+                    "file": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-large\\values-large.xml",
                     "position": {
-                        "startLine": 26,
+                        "startLine": 15,
                         "startColumn": 4,
-                        "startOffset": 1627,
-                        "endColumn": 65,
-                        "endOffset": 1688
+                        "startOffset": 1057,
+                        "endColumn": 67,
+                        "endOffset": 1120
                     }
                 }
             },
@@ -158,18 +158,18 @@
                 "to": {
                     "startLine": 10,
                     "startColumn": 4,
-                    "startOffset": 573,
-                    "endColumn": 65,
-                    "endOffset": 634
+                    "startOffset": 598,
+                    "endColumn": 67,
+                    "endOffset": 661
                 },
                 "from": {
-                    "file": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-large\\values.xml",
+                    "file": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-large\\values-large.xml",
                     "position": {
-                        "startLine": 27,
+                        "startLine": 16,
                         "startColumn": 4,
-                        "startOffset": 1693,
-                        "endColumn": 65,
-                        "endOffset": 1754
+                        "startOffset": 1125,
+                        "endColumn": 67,
+                        "endOffset": 1188
                     }
                 }
             },
@@ -177,18 +177,18 @@
                 "to": {
                     "startLine": 11,
                     "startColumn": 4,
-                    "startOffset": 639,
-                    "endColumn": 54,
-                    "endOffset": 689
+                    "startOffset": 666,
+                    "endColumn": 63,
+                    "endOffset": 725
                 },
                 "from": {
-                    "file": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-large\\values.xml",
+                    "file": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-large\\values-large.xml",
                     "position": {
-                        "startLine": 29,
+                        "startLine": 17,
                         "startColumn": 4,
-                        "startOffset": 1760,
-                        "endColumn": 54,
-                        "endOffset": 1810
+                        "startOffset": 1193,
+                        "endColumn": 63,
+                        "endOffset": 1252
                     }
                 }
             },
@@ -196,18 +196,18 @@
                 "to": {
                     "startLine": 12,
                     "startColumn": 4,
-                    "startOffset": 694,
-                    "endColumn": 103,
-                    "endOffset": 793
+                    "startOffset": 730,
+                    "endColumn": 54,
+                    "endOffset": 780
                 },
                 "from": {
-                    "file": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-large\\values.xml",
+                    "file": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-large\\values-large.xml",
                     "position": {
-                        "startLine": 33,
+                        "startLine": 18,
                         "startColumn": 4,
-                        "startOffset": 2044,
-                        "endColumn": 104,
-                        "endOffset": 2144
+                        "startOffset": 1257,
+                        "endColumn": 54,
+                        "endOffset": 1307
                     }
                 }
             },
@@ -215,18 +215,37 @@
                 "to": {
                     "startLine": 13,
                     "startColumn": 4,
-                    "startOffset": 798,
-                    "endColumn": 115,
-                    "endOffset": 909
+                    "startOffset": 785,
+                    "endColumn": 103,
+                    "endOffset": 884
                 },
                 "from": {
-                    "file": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-large\\values.xml",
+                    "file": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-large\\values-large.xml",
                     "position": {
-                        "startLine": 35,
+                        "startLine": 21,
                         "startColumn": 4,
-                        "startOffset": 2150,
-                        "endColumn": 116,
-                        "endOffset": 2262
+                        "startOffset": 1493,
+                        "endColumn": 103,
+                        "endOffset": 1592
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 889,
+                    "endColumn": 115,
+                    "endOffset": 1000
+                },
+                "from": {
+                    "file": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-large\\values-large.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 1597,
+                        "endColumn": 115,
+                        "endOffset": 1708
                     }
                 }
             }

@@ -1,4 +1,4 @@
-package com.example.lazyswitch;
+package com.example.followrobot;
 
 import android.app.Activity;
 import android.content.Intent;

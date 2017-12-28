@@ -1,4 +1,4 @@
-package com.example.lazyswitch;
+package com.example.followrobot;
 
 import java.io.IOException;
 import java.io.InputStream;

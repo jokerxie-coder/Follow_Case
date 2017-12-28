@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.lazyswitch"
+    package="com.example.followrobot"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="11"
-        android:targetSdkVersion="21" />
+        android:minSdkVersion="15"
+        android:targetSdkVersion="23" />
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
@@ -15,11 +15,11 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/light"
+        android:icon="@drawable/follow"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.lazyswitch.MainActivity"
+            android:name="com.example.followrobot.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,13 +28,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.lazyswitch.DeviceListActivity"
+            android:name="com.example.followrobot.DeviceListActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="选取连接设备"
             android:theme="@android:style/Theme.Holo.Light.Dialog" />
         <activity
-            android:name="com.example.lazyswitch.AboutActivity"
-            android:icon="@drawable/light"
+            android:name="com.example.followrobot.AboutActivity"
+            android:icon="@drawable/follow"
             android:label="说明"
             android:theme="@style/AboutTheme" />
     </application>
