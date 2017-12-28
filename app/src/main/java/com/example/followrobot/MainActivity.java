@@ -141,7 +141,7 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public boolean onDown(MotionEvent e) {
-				// TODO Auto-generated method stub
+
 				return false;
 			}
 		}, handler);
@@ -168,38 +168,7 @@ public class MainActivity extends Activity {
     	return super.onTouchEvent(event);
     }
 
-    //发送按键响应
-    public void onSendButtonClicked(View v){
-    	int i=0;
-    	int n=0;
-    	try{
-    		OutputStream os = _socket.getOutputStream();   //蓝牙连接输出流
-    		byte[] bos = edit0.getText().toString().getBytes();
-    		for(i=0;i<bos.length;i++){
-    			if(bos[i]==0x0a)n++;
-    		}
-    		byte[] bos_new = new byte[bos.length+n];
-    		n=0;
-    		for(i=0;i<bos.length;i++){ //手机中换行为0a,将其改为0d 0a后再发送
-    			if(bos[i]==0x0a){
-    				bos_new[n]=0x0d;
-    				n++;
-    				bos_new[n]=0x0a;
-    			}else{
-    				bos_new[n]=bos[i];
-    			}
-    			n++;
-    		}
-    		
-    		os.write(bos_new);	
-    	}catch(IOException e){  		
-    	}  	
-    }
-    
-    
-    
-    
-    
+
     Thread m=new Thread(new MyThread());
    
     public void onTurnOnClicked(View view){
