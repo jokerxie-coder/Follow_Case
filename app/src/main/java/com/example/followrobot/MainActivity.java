@@ -44,32 +44,29 @@ public class MainActivity extends Activity {
 	private final static String MY_UUID = "00001101-0000-1000-8000-00805F9B34FB";   //SPP服务UUID号
 	
 	private InputStream is;    //输入流，用来接收蓝牙数据
-	//private TextView text0;    //提示栏解句柄
-    private EditText edit0;    //发送数据输入句柄
     private String smsg = "";    //显示用数据缓存
-    
-    public String filename=""; //用来保存存储的文件名
-    BluetoothDevice _device = null;     //蓝牙设备
-    BluetoothSocket _socket = null;      //蓝牙通信socket
-   // boolean _discoveryFinished = false;
-    boolean bRun = true;
-    boolean bThread = false;
-    
+    private BluetoothDevice device = null;     //蓝牙设备
+    private BluetoothSocket socket = null;      //蓝牙通信socket
+
+	private boolean bRun=false;//接收数据线程运行标志位
     private ActionBar actionBar;
     private SharedPreferences sp;
     private Editor editor;
     private String ifSwitch ;
     private Button bu_turnon;
     
-    private BluetoothAdapter _bluetooth = BluetoothAdapter.getDefaultAdapter();    //获取本地蓝牙适配器，即蓝牙设备
+    private BluetoothAdapter bluetooth = BluetoothAdapter.getDefaultAdapter();    //获取本地蓝牙适配器，即蓝牙设备
 	private SensorManager sensorManager;
 	
 	private float rotate;// 防止多次移动，角度出现问题，在每次移动时，先移动回来。
 
 	private MySensorEventListener listener;
 
+
+	//方位角
 	private TextView tv_nowAngle;
-    /** Called when the activity is first created. */
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,8 +94,11 @@ public class MainActivity extends Activity {
         	editor.putString("switch", "on");
         	editor.commit();
         }
-        
-        
+
+
+        /**
+		 * 检测用户的手势，并做出相应的处理
+		 */
         gestureDetector = new GestureDetector(getApplicationContext(), new OnGestureListener() {
 			
 			@Override
@@ -144,43 +144,55 @@ public class MainActivity extends Activity {
 
 				return false;
 			}
-		}, handler);
+		});
         
        //如果打开本地蓝牙设备不成功，提示信息，结束程序
-        if (_bluetooth == null){
+        if (bluetooth == null){
         	Toast.makeText(this, "无法打开手机蓝牙，请确认手机是否有蓝牙功能！", Toast.LENGTH_LONG).show();
             finish();
             return;
         }
         
-        // 设置设备可以被搜索  
+        //开启线程设置设备可以被搜索
        new Thread(){
     	   public void run(){
-    		   if(_bluetooth.isEnabled()==false){
-        		_bluetooth.enable();
+
+    		   if(bluetooth.isEnabled()==false){
+        		bluetooth.enable();
     		   }
     	   }   	   
        }.start();      
     }
-    
+
+
+    /**
+	 * 处理屏幕点击事件
+	 * @param event
+	 * @return
+     */
     public boolean onTouchEvent(MotionEvent event) {
     	gestureDetector.onTouchEvent(event);
     	return super.onTouchEvent(event);
     }
 
 
+	//创建线程对象
     Thread m=new Thread(new MyThread());
-   
+
+	/**
+	 * 开始跟踪按钮点击事件
+	 * @param view
+     */
     public void onTurnOnClicked(View view){
     	if(sp.getBoolean("isConnected", false)==true){
     		if(sp.getString("switch", null).equals("on")){
-        		m.start();
+        		m.start();//开启线程
         		editor.putString("switch", "off");
         		editor.commit();
         		bu_turnon.setBackgroundResource(R.drawable.switch_off);
         		bu_turnon.setText("结束跟踪");
         	}else{
-        		m.stop();
+        		m.interrupt();//中断线程
         		editor.putString("switch", "on");
         		editor.commit();
         		bu_turnon.setText("开始跟踪");
@@ -192,32 +204,41 @@ public class MainActivity extends Activity {
     	}
     	
     }
-    
-    
-    
+
+
+    /**
+	 * 初始化右上角的菜单选项的布局
+	 * @param menu
+	 * @return
+	 */
     public boolean onCreateOptionsMenu(Menu menu) {
         
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.options, menu);
         return super.onCreateOptionsMenu(menu);
     }
-    
+
+    /**
+	 * 处理右上角的菜单选项的点击事件
+	 * @param item
+	 * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
     	
     	switch (item.getItemId()) {
     	
-		case R.id.quit:
+		case R.id.quit://退出
 			editor.putBoolean("isConnected", false);
 	    	editor.commit();
 			finish();
 			break;
-		case android.R.id.home:
+		case android.R.id.home://home键
 			editor.putBoolean("isConnected", false);
 	    	editor.commit();
 			finish();
 			break;
-		case R.id.about:
+		case R.id.about://说明
 			Intent intent = new Intent(MainActivity.this,AboutActivity.class);
 			startActivity(intent);
 			break;
@@ -228,38 +249,43 @@ public class MainActivity extends Activity {
     	
     	return super.onOptionsItemSelected(item);
     }
-    
+
+
+    /**
+	 * 向单片机蓝牙模块发送命令
+	 * @param command
+     */
     public void sendCommand(String command){
-    	int i = 0;
+    	int i ;
     	int n = 0;
-    	if(_socket!=null)
-    	{
-    	try {
-			OutputStream os = _socket.getOutputStream();
-			byte[] bos = command.getBytes();
-			for(i=0;i<bos.length;i++){
-    			if(bos[i]==0x0a)n++;
-    		}
-    		byte[] bos_new = new byte[bos.length+n];
-    		n=0;
-    		for(i=0;i<bos.length;i++){ //手机中换行为0a,将其改为0d 0a后再发送
-    			if(bos[i]==0x0a){
-    				bos_new[n]=0x0d;
-    				n++;
-    				bos_new[n]=0x0a;
-    			}else{
-    				bos_new[n]=bos[i];
-    			}
-    			n++;
-    		}
-    		os.write(bos_new);	
-    		Toast.makeText(getApplicationContext(), "发送数据成功！", Toast.LENGTH_SHORT).show();
-		} catch (IOException e) {
-			
-			Toast.makeText(getApplicationContext(), "发送数据失败！", Toast.LENGTH_SHORT).show();
-			e.printStackTrace();
-		} 
-    }
+    	if(socket!=null) {
+			try {
+				OutputStream os = socket.getOutputStream();
+				byte[] bos = command.getBytes();
+				for(i=0;i<bos.length;i++){
+					if(bos[i]==0x0a)
+						n++;
+				}
+				byte[] bos_new = new byte[bos.length+n];
+				n=0;
+				for(i=0;i<bos.length;i++){ //手机中换行为0a,将其改为0d0a后再发送
+					if(bos[i]==0x0a){
+						bos_new[n]=0x0d;
+						n++;
+						bos_new[n]=0x0a;
+					}else{
+						bos_new[n]=bos[i];
+					}
+					n++;
+				}
+				os.write(bos_new);
+				Toast.makeText(getApplicationContext(), "发送数据成功！", Toast.LENGTH_SHORT).show();
+			} catch (IOException e) {
+
+				Toast.makeText(getApplicationContext(), "发送数据失败！", Toast.LENGTH_SHORT).show();
+				e.printStackTrace();
+			}
+    	}
     	else
     	{
     		Toast.makeText(getApplicationContext(), "请与智能跟踪机器人连接", Toast.LENGTH_SHORT).show();
@@ -275,27 +301,27 @@ public class MainActivity extends Activity {
                 // MAC地址，由DeviceListActivity设置返回
                 String address = data.getExtras().getString(DeviceListActivity.EXTRA_DEVICE_ADDRESS);
                 // 得到蓝牙设备句柄      
-                _device = _bluetooth.getRemoteDevice(address);
+                device = bluetooth.getRemoteDevice(address);
  
                 // 用服务号得到socket
                 try{
-                	_socket = _device.createRfcommSocketToServiceRecord(UUID.fromString(MY_UUID));
+                	socket = device.createRfcommSocketToServiceRecord(UUID.fromString(MY_UUID));
                 }catch(IOException e){
                 	Toast.makeText(this, "连接失败！", Toast.LENGTH_SHORT).show();
                 }
                 //连接socket
             	Button btn = (Button) findViewById(R.id.Button03);
                 try{
-                	_socket.connect();
-                	Toast.makeText(this, "连接"+_device.getName()+"成功！", Toast.LENGTH_SHORT).show();
+                	socket.connect();
+                	Toast.makeText(this, "连接"+device.getName()+"成功！", Toast.LENGTH_SHORT).show();
                 	editor.putBoolean("isConnected", true);
                 	editor.commit();
                 	btn.setText("断开");
                 }catch(IOException e){
                 	try{
                 		Toast.makeText(this, "连接失败！", Toast.LENGTH_SHORT).show();
-                		_socket.close();
-                		_socket = null;
+                		socket.close();
+                		socket = null;
                 	}catch(IOException ee){
                 		Toast.makeText(this, "连接失败！", Toast.LENGTH_SHORT).show();
                 	}
@@ -303,18 +329,21 @@ public class MainActivity extends Activity {
                 }
                 
                 //打开接收线程
+
                 try{
-            		is = _socket.getInputStream();   //得到蓝牙数据输入流
+            		is = socket.getInputStream();   //得到蓝牙数据输入流
             		}catch(IOException e){
             			Toast.makeText(this, "接收数据失败！", Toast.LENGTH_SHORT).show();
             			return;
             		}
-            		if(bThread==false){
-            			ReadThread.start();
-            			bThread=true;
-            		}else{
-            			bRun = true;
-            		}
+
+					//如果接收数据线程未开启，则开启接收数据线程，
+				    //并将接收数据线程标志位置为true
+					if(bRun==false){
+						ReadThread.start();
+						bRun=true;
+					}
+
             }
     		break;
     	default:break;
@@ -323,63 +352,81 @@ public class MainActivity extends Activity {
     
     //接收数据线程
     Thread ReadThread=new Thread(){
-    	
+
+
+        /**
+		 * 线程的run()方法只会执行一次
+		 * 因此要想线程一直运行，就得在run()方法中加一个while()循环
+		 */
     	public void run(){
-    		int num = 0;
+    		int num;
     		byte[] buffer = new byte[1024];
     		byte[] buffer_new = new byte[1024];
-    		int i = 0;
-    		int n = 0;
-    		bRun = true;
+    		int i ;
+    		int n ;
     		//接收线程
-    		while(true){
+    		while(bRun){
     			try{
-    				while(is.available()==0){
-    					while(bRun == false){}
-    				}
-    				while(true){
-    					num = is.read(buffer);         //读入数据
-    					n=0;
-    					
-    					String s0 = new String(buffer,0,num);
-    					for(i=0;i<num;i++){
-    						if((buffer[i] == 0x0d)&&(buffer[i+1]==0x0a)){
-    							buffer_new[n] = 0x0a;
-    							i++;
-    						}else{
-    							buffer_new[n] = buffer[i];
-    						}
-    						n++;
-    					}
-    					String s = new String(buffer_new,0,n);
-    					smsg+=s;   //写入接收缓存
-    					if(is.available()==0)break;  //短时间没有数据才跳出进行显示
-    				}    	    		
-    	    		}catch(IOException e){
-    	    	}
+					num = is.read(buffer);         //读入数据
+					n=0;
+
+					//将服务器端发送过来的换行0x0d0a转换为手机识别的换行0a
+					//其中0x0d0a和0a均为字符的十六进制数表示
+					for(i=0;i<num;i++){
+						if((buffer[i] == 0x0d)&&(buffer[i+1]==0x0a)){
+							buffer_new[n] = 0x0a;
+							i++;
+						}else{
+							buffer_new[n] = buffer[i];
+						}
+						n++;
+					}
+					String s = new String(buffer_new,0,n);
+					smsg+=s;   //写入接收缓存
+
+					//如果短时间没有数据，
+					//则利用Handler发送消息通知UI线程显示接收的数据
+					//同时跳出while循环
+					if(is.available()==0){
+
+						//需要数据传递，用下面方法；
+						Message msg = new Message();
+						msg.obj = smsg;//可以是基本类型，可以是对象，可以是List、map等；
+						receiveHandler.sendMessage(msg);
+						break;
+					}
+
+				}catch(IOException e){
+					e.printStackTrace();
+				}
     		}
     	}
     };
-    
-    //消息处理队列
-    Handler handler= new Handler(){
+
+    /**
+	 * 处理接收单片机蓝牙模块发送过来的数据
+	 */
+    Handler receiveHandler= new Handler(){
     	public void handleMessage(Message msg){
     		super.handleMessage(msg);
-    		tv_nowAngle.setText(smsg);
-    		if(smsg.length()==2){
-    			smsg = "";
-    		}
+
+			Toast.makeText(MainActivity.this,"接收到的数据为"+msg.obj.toString(), Toast.LENGTH_SHORT).show();
     	}
     };
     
     //关闭程序掉用处理部分
     public void onDestroy(){
     	super.onDestroy();
-    	if(_socket!=null)  //关闭连接socket
+    	if(socket!=null)  //关闭连接socket
     	try{
-    		_socket.close();
-    	}catch(IOException e){}
-    	_bluetooth.disable();  //关闭蓝牙服务
+			bRun=false;//停止接收线程
+    		socket.close();
+
+    	}catch(IOException e){
+
+			e.printStackTrace();
+		}
+    		bluetooth.disable();  //关闭蓝牙服务
 
 		//Java的Thread类提供的destroy和stop方法无法正确终止线程，
 		// 只能通过标志或者interrupt()方法来进行。
@@ -393,7 +440,7 @@ public class MainActivity extends Activity {
     
     //连接按键响应函数
     public void onConnectButtonClicked(View v){ 
-    	if(_bluetooth.isEnabled()==false){  //如果蓝牙服务不可用则提示
+    	if(bluetooth.isEnabled()==false){  //如果蓝牙服务不可用则提示
     		Toast.makeText(this, " 打开蓝牙中...", Toast.LENGTH_LONG).show();
     		return;
     	}
@@ -401,7 +448,7 @@ public class MainActivity extends Activity {
     	
         //如未连接设备则打开DeviceListActivity进行设备搜索
     	Button btn = (Button) findViewById(R.id.Button03);
-    	if(_socket==null){
+    	if(socket==null){
     		Intent serverIntent = new Intent(this, DeviceListActivity.class); //跳转程序设置
     		startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE);  //设置返回宏定义
     	}
@@ -411,35 +458,37 @@ public class MainActivity extends Activity {
     	    try{
     	    	
     	    	is.close();
-    	    	_socket.close();
-    	    	_socket = null;
-    	    	bRun = false;
+    	    	socket.close();
+    	    	socket = null;
+    	    	bRun = false;//停止接收数据线程
     	    	btn.setText("连接");
     	    	
-    	    }catch(IOException e){} 
+    	    }catch(IOException e){
+				e.printStackTrace();
+			}
     	    editor.putBoolean("isConnected", false);
 	    	editor.commit();
     	}
     	return;
     }
-     
-    
-    
-    public class MyThread implements Runnable{
+
+
+    /**
+	 * 使用Handler来完成定时操作
+     * 使用线程每隔5000ms向单片机蓝牙模块发送一次Android控制端当前的方向角
+	 */
+	public class MyThread implements Runnable{
     	@Override
     	public void run(){
-    		
-    		//System.out.print("run方法被执行。。。。。。。。。。。。");
-    		
-    		
+
     		while(true)
     		{
     			try{
     				
     				Message message=new Message();
     				message.what=1;
-    				handler1.sendMessage(message);
-    				Thread.sleep(5000);
+					sendHandler.sendMessage(message);
+    				Thread.sleep(5000); //线程睡眠5000ms
     				}
     			catch(InterruptedException e)
     			{
@@ -448,12 +497,14 @@ public class MainActivity extends Activity {
     		}
     	}
     }
-    
-    Handler handler1=new Handler(){
+
+    /**
+	 *处理定时发送方向角的Handler
+	 */
+    Handler sendHandler=new Handler(){
     	public void handleMessage(Message msg){
-    		
-    		
-    		
+
+			//发送方向角给单片机控制端
     		sendCommand(String.valueOf(getrotate()));
     	}
     };
