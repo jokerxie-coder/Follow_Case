@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.example.followrobot;
+package com.example.followcase;
 
 public final class R {
     public static final class anim {
@@ -1903,7 +1903,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
             0x7f010004, 0x7f010005, 0x7f010006
         };
         /**
-          <p>This symbol is the offset where the {@link com.example.followrobot.R.attr#windowActionBar}
+          <p>This symbol is the offset where the {@link com.example.followcase.R.attr#windowActionBar}
           attribute's value can be found in the {@link #ActionBarWindow} array.
 
 
@@ -1917,7 +1917,7 @@ containing a value of this type.
         */
         public static final int ActionBarWindow_windowActionBar = 0;
         /**
-          <p>This symbol is the offset where the {@link com.example.followrobot.R.attr#windowActionBarOverlay}
+          <p>This symbol is the offset where the {@link com.example.followcase.R.attr#windowActionBarOverlay}
           attribute's value can be found in the {@link #ActionBarWindow} array.
 
 
@@ -2023,7 +2023,7 @@ containing a value of this type.
         */
         public static final int ActionBarWindow_windowFixedWidthMinor = 5;
         /**
-          <p>This symbol is the offset where the {@link com.example.followrobot.R.attr#windowSplitActionBar}
+          <p>This symbol is the offset where the {@link com.example.followcase.R.attr#windowSplitActionBar}
           attribute's value can be found in the {@link #ActionBarWindow} array.
 
 

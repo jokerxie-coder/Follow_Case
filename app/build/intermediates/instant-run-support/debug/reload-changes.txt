@@ -1,0 +1,9 @@
+CHANGED,F:\Java\Android-Projects\Follow_Robot\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\followrobot\MainActivity$3$override.class
+CHANGED,F:\Java\Android-Projects\Follow_Robot\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\followrobot\MainActivity$MySensorEventListener$override.class
+CHANGED,F:\Java\Android-Projects\Follow_Robot\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\followrobot\MainActivity$5$override.class
+CHANGED,F:\Java\Android-Projects\Follow_Robot\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\followrobot\MainActivity$MyThread$override.class
+CHANGED,F:\Java\Android-Projects\Follow_Robot\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\followrobot\MainActivity$2$override.class
+CHANGED,F:\Java\Android-Projects\Follow_Robot\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\followrobot\MainActivity$override.class
+CHANGED,F:\Java\Android-Projects\Follow_Robot\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\followrobot\MainActivity$1$override.class
+CHANGED,F:\Java\Android-Projects\Follow_Robot\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\android\tools\fd\runtime\AppPatchesLoaderImpl.class
+CHANGED,F:\Java\Android-Projects\Follow_Robot\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\followrobot\MainActivity$4$override.class

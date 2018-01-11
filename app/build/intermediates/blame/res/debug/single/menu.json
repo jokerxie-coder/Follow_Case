@@ -2,5 +2,9 @@
     {
         "merged": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\build\\intermediates\\res\\merged\\debug\\menu\\options.xml",
         "source": "F:\\Java\\Android-Projects\\Follow_Robot\\app\\src\\main\\res\\menu\\options.xml"
+    },
+    {
+        "merged": "F:\\Java\\Android-Projects\\Follow_Case\\app\\build\\intermediates\\res\\merged\\debug\\menu\\options.xml",
+        "source": "F:\\Java\\Android-Projects\\Follow_Case\\app\\src\\main\\res\\menu\\options.xml"
     }
 ]

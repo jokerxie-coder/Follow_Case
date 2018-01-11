@@ -1,4 +1,4 @@
-package com.example.followrobot;
+package com.example.followcase;
 
 import java.io.IOException;
 import java.io.InputStream;

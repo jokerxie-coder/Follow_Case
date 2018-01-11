@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.followrobot"
+    package="com.example.followcase"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -18,8 +18,13 @@
         android:icon="@drawable/follow"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="Ev3zGXPiEB25hSbeProMURBE8s4UwNgc" >
+        </meta-data>
+
         <activity
-            android:name="com.example.followrobot.MainActivity"
+            android:name="com.example.followcase.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,12 +33,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.followrobot.DeviceListActivity"
+            android:name="com.example.followcase.DeviceListActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="选取连接设备"
             android:theme="@android:style/Theme.Holo.Light.Dialog" />
         <activity
-            android:name="com.example.followrobot.AboutActivity"
+            android:name="com.example.followcase.AboutActivity"
             android:icon="@drawable/follow"
             android:label="说明"
             android:theme="@style/AboutTheme" />

@@ -1,4 +1,4 @@
-package com.example.followrobot;
+package com.example.followcase;
 
 import android.app.Activity;
 import android.content.Intent;
